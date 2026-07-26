@@ -237,6 +237,78 @@
   .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
   .feature-card p { font-size: 14.5px; color: var(--gray); line-height: 1.6; }
 
+  /* ---------- Explore ---------- */
+  .explore-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .explore-visual {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .explore-visual img { width: 100%; height: auto; }
+  .hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hotspot-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 0 0 rgba(242, 13, 36, 0.55);
+    animation: hotspot-pulse 2.2s ease-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes hotspot-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(242, 13, 36, 0.55); }
+    70% { box-shadow: 0 0 0 12px rgba(242, 13, 36, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(242, 13, 36, 0); }
+  }
+  .hotspot-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--white);
+    background: rgba(16, 16, 18, 0.9);
+    border: 1px solid var(--border);
+    padding: 4px 9px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .explore-copy .eyebrow { display: block; margin-bottom: 14px; }
+  .explore-copy h2 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.6px;
+  }
+  .explore-copy .sub-left { margin-top: 16px; font-size: 16px; color: var(--gray); line-height: 1.6; }
+  .explore-list { margin: 24px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .explore-list li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14.5px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .explore-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: rgba(242, 13, 36, 0.12);
+    border: 1px solid rgba(242, 13, 36, 0.4);
+  }
+
   /* ---------- Pricing ---------- */
   .pricing-grid {
     display: grid;
@@ -309,6 +381,9 @@
     .steps { grid-template-columns: 1fr; gap: 40px; }
     .step:not(:last-child)::after { display: none; }
     .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .explore-grid { grid-template-columns: 1fr; gap: 40px; }
+    .explore-copy { text-align: center; }
+    .explore-list { text-align: left; }
     .pricing-grid { grid-template-columns: 1fr; }
     section { padding: 72px 0; }
   }
@@ -393,10 +468,17 @@
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <h3>Smart TDEE &amp; Calorie Targets</h3>
+        <p>Your calorie and macro targets are built from your goal, activity level, and body stats — not a generic 2,000-calorie guess. Recalculates the moment your goal changes.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 17.5 17.5M17.5 6.5 6.5 17.5"/><rect x="2" y="9" width="4" height="6" rx="1"/><rect x="18" y="9" width="4" height="6" rx="1"/></svg>
         </div>
         <h3>Personalized Workout Plans</h3>
-        <p>A 4-week block built around your weak points, with manual logging and quick-start sessions when you go off-script.</p>
+        <p>A 4-week block built around your weak points, plus a Quick-Start mode for training your own session — free-form, no plan required, still logged.</p>
       </div>
       <div class="feature-card reveal">
         <div class="feature-icon">
@@ -418,6 +500,31 @@
         </div>
         <h3>Achievements &amp; Rank</h3>
         <p>Weekly rank tiers and milestone badges — built to reward consistency, not just another empty streak counter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="wrap">
+    <div class="explore-grid">
+      <div class="explore-visual reveal">
+        <img src="images/muscle-map.webp" alt="Front-facing muscle map used in MyPhysique's Explore tab" loading="lazy">
+        <div class="hotspot" style="top:17%; left:76%;"><span class="hotspot-dot"></span><span class="hotspot-label">Shoulders</span></div>
+        <div class="hotspot" style="top:25%; left:50%;"><span class="hotspot-dot"></span><span class="hotspot-label">Chest</span></div>
+        <div class="hotspot" style="top:31%; left:82%;"><span class="hotspot-dot"></span><span class="hotspot-label">Arms</span></div>
+        <div class="hotspot" style="top:36%; left:50%;"><span class="hotspot-dot"></span><span class="hotspot-label">Core</span></div>
+        <div class="hotspot" style="top:64%; left:38%;"><span class="hotspot-dot"></span><span class="hotspot-label">Legs</span></div>
+      </div>
+      <div class="explore-copy reveal">
+        <span class="eyebrow">Explore</span>
+        <h2>Tap a muscle. See what builds it.</h2>
+        <p class="sub-left">No more guessing which exercise works what. Pick a muscle group on the map and MyPhysique shows you every exercise that trains it — form cues, tips, and alternatives included.</p>
+        <ul class="explore-list">
+          <li>Browse by muscle group — chest, back, shoulders, arms, legs, core</li>
+          <li>Every exercise ships with an overview, how-to steps, and swaps</li>
+          <li>Jump straight from an exercise into a Quick-Start session</li>
+        </ul>
       </div>
     </div>
   </div>
